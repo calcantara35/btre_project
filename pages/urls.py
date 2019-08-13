@@ -5,5 +5,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index')  # this is the page
+    # routing template
+    path('', views.index, name='index'),
+    path('about', views.about, name='about')
+
 ]
