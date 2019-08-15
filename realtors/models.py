@@ -10,6 +10,7 @@ class Realtor(models.Model):
     email = models.CharField(max_length=50)
     is_mvp = models.BooleanField(default=False)
     hire_date = models.DateTimeField(default=datetime.now, blank=True)
+    # this is what gives the name in the admin structure for realtors
 
     def __str__(self):
         return self.name
