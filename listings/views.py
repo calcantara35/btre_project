@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator
 from .models import Listing
 
@@ -19,7 +19,21 @@ def index(request):
 
 
 def listing(request, listing_id):
-    return render(request, 'listings/listing.html')
+    listing = get_object_or_404(Listing, pk=listing_id)
+
+    # getting internal photos
+    internal_photos = []
+    for i in range(1, 7):
+        if getattr(listing, 'photo_%d' % i):
+            photo = getattr(listing, 'photo_%d' % i)
+            internal_photos.append(photo)
+
+    context = {
+        'listing': listing,
+        'internal_photos': internal_photos
+    }
+
+    return render(request, 'listings/listing.html', context)
 
 
 def search(request):

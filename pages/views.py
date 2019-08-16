@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 from listings.models import Listing
 from realtors.models import Realtor
